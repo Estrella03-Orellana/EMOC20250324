@@ -9,7 +9,8 @@
 <div class="container mt-4">
     <h2 class="mb-3">Listado de Bodegas</h2>
 
-    <form asp-action="Index" method="get" class="row g-3">
+    <form asp-action="Index">
+        <div class="row">
         <div class="col-md-4">
             <label class="form-label">Nombre</label>
             <input type="text" name="WarehouseName" class="form-control" placeholder="Ingrese el nombre de la bodega">
@@ -17,6 +18,7 @@
         <div class="col-md-4">
             <label class="form-label">Notas</label>
             <input type="text" name="Notes" class="form-control" placeholder="Ingrese la nota">
+        </div>
         </div>
         <div class="col-md-4">
             <label class="form-label">Cantidad de Registros</label>

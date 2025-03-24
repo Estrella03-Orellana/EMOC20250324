@@ -7,7 +7,8 @@
 <div class="container mt-4">
     <h2 class="mb-3">Buscar Productos</h2>
 
-    <form asp-action="Index" method="get" class="row g-3">
+    <form asp-action="Index">
+        <div class="row">
         <div class="col-md-4">
             <label class="form-label">Nombre</label>
             <input type="text" name="ProductName" class="form-control" placeholder="Ingrese el nombre del producto">
@@ -16,6 +17,8 @@
             <label class="form-label">Descripción</label>
             <input type="text" name="Description" class="form-control" placeholder="Ingrese descripción">
         </div>
+        </div>
+        <div class="row">
         <div class="col-md-4">
             <label class="form-label">Marca</label>
             <select name="BrandId" class="form-select" asp-items="ViewBag.BrandId"></select>
@@ -23,6 +26,7 @@
         <div class="col-md-4">
             <label class="form-label">Bodega</label>
             <select name="WarehouseId" class="form-select" asp-items="ViewBag.WarehouseId"></select>
+        </div>
         </div>
         <div class="col-md-4">
             <label class="form-label">Cantidad de Registros</label>

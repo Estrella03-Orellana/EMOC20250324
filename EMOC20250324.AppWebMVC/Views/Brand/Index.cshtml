@@ -10,7 +10,8 @@
 <div class="container mt-4">
     <h2 class="mb-3">Listado de Marcas</h2>
 
-    <form asp-action="Index" method="get" class="row g-3">
+    <form asp-action="Index">
+        <div class="row">
         <div class="col-md-4">
             <label class="form-label">Nombre</label>
             <input type="text" name="BrandName" class="form-control" placeholder="Ingrese el nombre de la marca">
@@ -19,7 +20,8 @@
             <label class="form-label">País</label>
             <input type="text" name="Country" class="form-control" placeholder="Ingrese el país">
         </div>
-        <div class="col-md-4">
+        </div>
+        <div class="col-4">
             <label class="form-label">Cantidad de Registros</label>
             <select name="topRegistro" class="form-select">
                 <option selected value="10">10</option>
