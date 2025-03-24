@@ -1,0 +1,99 @@
+﻿@model IEnumerable<EMOC20250324.AppWebMVC.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Buscar Productos</h2>
+
+    <form asp-action="Index" method="get" class="row g-3">
+        <div class="col-md-4">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="ProductName" class="form-control" placeholder="Ingrese el nombre del producto">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Descripción</label>
+            <input type="text" name="Description" class="form-control" placeholder="Ingrese descripción">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Marca</label>
+            <select name="BrandId" class="form-select" asp-items="ViewBag.BrandId"></select>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Bodega</label>
+            <select name="WarehouseId" class="form-select" asp-items="ViewBag.WarehouseId"></select>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Cantidad de Registros</label>
+            <select name="topRegistro" class="form-select">
+                <option selected value="10">10</option>
+                <option value="20">20</option>
+                <option value="60">60</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                <option value="0">Todos</option>
+            </select>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12">
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="Create">Ir a crear</a>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-striped" id="myTable">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.Price)</th>
+                <th>@Html.DisplayNameFor(model => model.PurchasePrice)</th>
+                <th>@Html.DisplayNameFor(model => model.Warehouse.WarehouseName)</th>
+                <th>@Html.DisplayNameFor(model => model.Brand.BrandName)</th>
+                <th>@Html.DisplayNameFor(model => model.Notes)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PurchasePrice)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Warehouse.WarehouseName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Brand.BrandName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Notes)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+             // $('#myTable').DataTable();
+
+            // $('#myTable').DataTable({
+            //      "language": {
+            //     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            //     }
+            // });
+
+             $('#myTable').DataTable({
+               "language":languageTable
+             });
+        });
+    </script>
+}
